@@ -1,0 +1,67 @@
+version: 1.0 
+config:
+  gpus: 8
+  seed: 2020
+  dataset:
+    workers: 3
+    num_class: 102
+    num_segments: 8
+    batch_size: 8
+    img_prefix: 'image_{:05d}.jpg'
+    video_source: False
+    dense_sample: False
+    modality: RGB
+    flow_prefix: ''
+    root_dir: /path
+    flip: True
+    input_mean: [0.485, 0.456, 0.406]
+    input_std: [0.229, 0.224 ,0.225]
+    crop_size: 224
+    scale_size: 256
+    train:
+      meta_file: /path
+    val:
+      meta_file: /path
+    test:
+      meta_file: /path
+
+  net:
+    arch: resnet50
+    model_type: 2D
+    consensus_type: avg
+    use_sync_bn: True
+    dropout: 0.8
+    img_feature_dim: 256
+    non_local: False
+    pretrain: True # imagenet pretrain for 2D network
+
+  evaluate:
+    spatial_crops: 1
+    temporal_samples: 1
+
+  trainer:
+    print_freq: 20
+    eval_freq: 1
+    epochs: 30
+    start_epoch: 0
+    loss_type: nll
+    no_partial_bn: False
+    clip_gradient: 20
+    lr_scheduler:
+      warmup_epochs: 5
+      type: CosineAnnealingLR
+      kwargs:
+        T_max: 30
+    optimizer:
+      type: SGD
+      kwargs:
+        lr: 0.01
+        momentum: 0.9
+        weight_decay: 0.0005
+        nesterov: True
+
+
+  saver:
+    save_dir: 'checkpoint/'
+    #pretrain_model: '/path'
+    #resume_model: '/path'

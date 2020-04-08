@@ -1,0 +1,11 @@
+*.tar
+*.bak
+*.pyc
+*.npy
+*.o
+*.so
+
+build/
+_ext/
+checkpoint/
+__pycache__/

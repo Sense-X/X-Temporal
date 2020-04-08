@@ -1,0 +1,63 @@
+version: 1.0 
+config:
+  gpus: 8
+  seed: 2020
+  dataset:
+    workers: 3
+    num_class: 102
+    num_segments: 16
+    batch_size: 32
+    img_prefix: 'image_{:05d}.jpg'
+    video_source: False
+    dense_sample: True
+    modality: RGB
+    flow_prefix: ''
+    root_dir: /path
+    flip: True
+    dense_sample_rate: 2
+    input_mean: [0.485, 0.456, 0.406]
+    input_std: [0.229, 0.224 ,0.225]
+    crop_size: 112
+    scale_size: 128
+    train:
+      meta_file: /path
+    val:
+      meta_file: /path
+    test:
+      meta_file: /path
+
+  net:
+    arch: stresnet18
+    model_type: 3D
+    dropout: 0.0
+    max_pooling: True
+
+  evaluate:
+    spatial_crops: 1
+    temporal_samples: 1
+
+  trainer:
+    print_freq: 20
+    eval_freq: 5
+    epochs: 120
+    start_epoch: 0
+    loss_type: nll
+    clip_gradient: 20
+    lr_scheduler:
+      warmup_epochs: 10
+      type: CosineAnnealingLR
+      kwargs:
+        T_max: 120
+    optimizer:
+      type: SGD
+      kwargs:
+        lr: 0.4
+        momentum: 0.9
+        weight_decay: 0.0005
+        nesterov: True
+
+
+  saver:
+    save_dir: 'checkpoint/'
+    #pretrain_model: '/path'
+    #resume_model: '/path'
