@@ -62,7 +62,7 @@ You can also directly read the original video file. Decor library is used in X-T
 abseiling/Tdd9inAW1VY_000361_000371.mkv 300 0
 zumba/x0KPHFRbzDo_000087_000097.mkv 300 599
 ```
-In the ** tools ** folder, scripts for extracting frames and generating data set meta files are provided.
+In the **tools** folder, scripts for extracting frames and generating data set meta files are provided.
 
 ### About multi-label classification
 The format of the multi-category data set is as follows, which are the video path, the number of frames, and the categories included.
