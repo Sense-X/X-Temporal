@@ -1,1 +1,4 @@
-decord==0.3.6
+decord
+tqdm
+tensorboardX
+scikit-learn
