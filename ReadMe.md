@@ -27,7 +27,7 @@ X-Temporal is an open source video understanding codebase from Sensetime X-Lab g
 v0.1.0 (08/04/2020)
 > X-Temporal is online!
 
-## Get Started
+## Get started
 ### Prerequisites
 
 The code is built with following libraries:
@@ -164,4 +164,3 @@ Kindly cite our publications if this repo and algorithms help in your research.
 
 ## Contributors
 X-Temporal is maintained by Hao Shao and ManYuan Zhang and [Yu Liu](http://liuyu.us/).
-
