@@ -139,6 +139,9 @@ python $ROOT/x_temporal/test.py --config $cfg | tee log.test.$T
 ./test.sh
 ```
 
+## ModelZoo
+Coming soon.
+
 ## LICENSE
 X-Temporal is released under the [MIT license](LICENSE). 
 
