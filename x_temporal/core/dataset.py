@@ -45,7 +45,7 @@ class VideoDataSet(data.Dataset):
                  num_segments=3, new_length=1, modality='RGB',
                  image_tmpl='img_{:05d}.jpg', transform=None,
                  random_shift=True, test_mode=False,
-                 remove_missing=True, dense_sample=False, multi_class=False,
+                 remove_missing=False, dense_sample=False, multi_class=False,
                  temporal_samples=1, reverse_samples=False, dense_sample_rate=2,
                  video_source=False):
 
@@ -127,7 +127,7 @@ class VideoDataSet(data.Dataset):
     def _parse_list(self):
         # check the frame number is large >3:
         tmp = [x.strip().split(' ') for x in open(self.list_file)]
-        if self.test_mode or self.remove_missing:
+        if not self.test_mode or self.remove_missing:
             tmp = [item for item in tmp if int(item[1]) >= 3]
         self.video_list = [VideoRecord(item) for item in tmp]
 
