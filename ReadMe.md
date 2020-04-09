@@ -8,7 +8,7 @@ X-Temporal is an open source video understanding codebase from Sensetime X-Lab g
 
 ## Introduction
 * Support popular video understanding frameworks
-  * SLowFast
+  * SlowFast
   * R(2+1)D
   * R3D
   * TSN
