@@ -15,16 +15,28 @@ def load_state_dict(model, other_state_dict, strict=False):
         """Old style model is stored with all names of parameters share common prefix 'module.'"""
         def f(x): return x.split(prefix, 1)[-1] if x.startswith(prefix) else x
         return {f(key): value for key, value in state_dict.items()}
+
+    def add_prefix(state_dict, prefix):
+        def f(x): return 'module.' + x 
+        return {f(key): value for key, value in state_dict.items()}
+
     logger.info(
-        "try to load the whole resume model or pretrained detection model...")
+        "try to load the whole resume model or pretrained model...")
 
     model_state_dict = model.state_dict()
     model_keys = model_state_dict.keys()
-    if not list(model_keys)[0].startswith('module'):
+    other_keys = other_state_dict.keys()
+
+    model_key_sample = list(model_keys)[0]
+    other_key_sample = list(other_keys)[0]
+    if model_key_sample.startswith('module') and not other_key_sample.startswith('module'):
+        other_state_dict = add_prefix(other_state_dict, 'module.')
+    elif not model_key_sample.startswith('module') and other_key_sample.startswith('module'):
         other_state_dict = remove_prefix(other_state_dict, 'module.')
+
     other_keys = other_state_dict.keys()
     shared_keys, unexpected_keys, missing_keys \
-        = check_keys(model_keys, other_keys, 'model')
+        = check_keys(model_keys, other_keys)
 
     incompatible_keys = set([])
     for key in other_keys:
@@ -50,7 +62,7 @@ def load_state_dict(model, other_state_dict, strict=False):
 
             # check and display info module by module
             shared_keys, unexpected_keys, missing_keys, \
-                = check_keys(module_keys, other_keys, mname)
+                = check_keys(module_keys, other_keys)
             display_info(mname, shared_keys, unexpected_keys, missing_keys)
             num_share_keys += len(shared_keys)
     else:
@@ -58,7 +70,7 @@ def load_state_dict(model, other_state_dict, strict=False):
     return num_share_keys
 
 
-def check_keys(own_keys, other_keys, own_name):
+def check_keys(own_keys, other_keys):
     own_keys = set(own_keys)
     other_keys = set(other_keys)
     shared_keys = own_keys & other_keys

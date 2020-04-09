@@ -5,7 +5,6 @@ from x_temporal.core.transforms import *
 from torch.nn.init import normal_, constant_
 from x_temporal.models.resnet import *
 from x_temporal.models.slowfast import *
-import pretrainedmodels
 
 import logging
 logger = logging.getLogger('global')

@@ -18,7 +18,7 @@ from x_temporal.utils.lr_helper import build_scheduler
 from x_temporal.utils.optimizer_helper import build_optimizer
 from x_temporal.utils.metrics import Top1Metric
 from x_temporal.utils.utils import format_cfg, accuracy, AverageMeter, load_checkpoint
-from x_temporal.utils.dist_helper import (get_rank, get_world_size, all_gather, all_reduce)
+from x_temporal.utils.dist_helper import get_rank, get_world_size, all_gather, all_reduce
 from x_temporal.utils.model_helper import load_state_dict
 from x_temporal.utils.dataset_helper import get_val_crop_transform, get_dataset, shuffle_dataset
 from x_temporal.core.models_entry import get_model, get_augmentation
@@ -158,7 +158,6 @@ class TemporalHelper(object):
 
 
     def _setup_env(self):
-
         # set random seed
         np.random.seed(self.config.get('seed', 2020))
         torch.manual_seed(self.config.get('seed', 2020))
