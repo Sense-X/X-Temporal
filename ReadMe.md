@@ -1,6 +1,10 @@
 # X-Temporal
 
+**Easily implement SOTA video understanding methods with PyTorch on multiple machines and GPUs**
+
 X-Temporal is an open source video understanding codebase from Sensetime X-Lab group that provides state-of-the-art video classification models, including papers "[Temporal Segment Networks](https://arxiv.org/abs/1608.00859)", "[Temporal Interlacing Network](https://arxiv.org/abs/2001.06499)", "[Temporal Shift Module](https://arxiv.org/abs/1811.08383)", "[ResNet 3D](https://arxiv.org/pdf/1711.11248)", "[SlowFast Networks for Video Recognition](https://arxiv.org/abs/1812.03982)", and "[Non-local Neural Networks](https://arxiv.org/abs/1711.07971)". 
+
+*This repo includes all models and codes used in our 1st place solution in ICCV19-Multi Moments in Time Challenge [Challenge Website](http://moments.csail.mit.edu/results2019.html)*
 
 ## Introduction
 * Support popular video understanding frameworks
@@ -16,7 +20,6 @@ X-Temporal is an open source video understanding codebase from Sensetime X-Lab g
   * Take video Flow frames as input
   * Support Multi-label dataset
 * High-performance and modular design can help rapid implementation and evaluation of novel video research ideas.
-* With the codebase we won the 1st place in the ICCV19 - Multi Moments in Time challenge. [Challenge Website](http://moments.csail.mit.edu/results2019.html).
 
 
 
@@ -141,6 +144,24 @@ X-Temporal is released under the [MIT license](LICENSE).
 
 ## [Configuration details](Configuration.md)
 
+## Reference
+Kindly cite our publications if this repo and algorithms help in your research.
+```
+@article{zhang2020top,
+  title={Top-1 Solution of Multi-Moments in Time Challenge 2019},
+  author={Zhang, Manyuan and Shao, Hao and Song, Guanglu and Liu, Yu and Yan, Junjie},
+  journal={arXiv preprint arXiv:2003.05837},
+  year={2020}
+}
+
+@article{shao2020temporal,
+  title={Temporal Interlacing Network},
+  author={Shao, Hao and Qian, Shengju and Liu, Yu},
+  journal={arXiv preprint arXiv:2001.06499},
+  year={2020}
+}
+```
 
 ## Contributors
-X-Temporal  is written and maintained by Hao Shao, ManYuan Zhang, [Yu Liu](http://liuyu.us/).
+X-Temporal is maintained by Hao Shao and ManYuan Zhang and [Yu Liu](http://liuyu.us/).
+
