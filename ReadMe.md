@@ -155,10 +155,10 @@ Kindly cite our publications if this repo and algorithms help in your research.
 }
 
 @article{shao2020temporal,
-  title={Temporal Interlacing Network},
-  author={Shao, Hao and Qian, Shengju and Liu, Yu},
-  journal={arXiv preprint arXiv:2001.06499},
-  year={2020}
+    title={Temporal Interlacing Network},
+    author={Hao Shao and Shengju Qian and Yu Liu},
+    year={2020},
+    journal={AAAI},
 }
 ```
 
