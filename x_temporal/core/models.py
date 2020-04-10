@@ -179,9 +179,7 @@ class TSN(nn.Module):
                     count += 1
                     if count >= (2 if self._enable_pbn else 1):
                         m.eval()
-                        # shutdown update in frozen mode
-                        m.weight.requires_grad = False
-                        m.bias.requires_grad = False
+
 
     def partialBN(self, enable):
         self._enable_pbn = enable
