@@ -29,7 +29,6 @@ config:
     arch: resnet50
     model_type: 2D
     consensus_type: avg
-    use_sync_bn: True
     dropout: 0.8
     img_feature_dim: 256
     non_local: False
@@ -45,7 +44,7 @@ config:
     epochs: 30
     start_epoch: 0
     loss_type: nll
-    no_partial_bn: False
+    no_partial_bn: True
     clip_gradient: 20
     lr_scheduler:
       warmup_epochs: 5

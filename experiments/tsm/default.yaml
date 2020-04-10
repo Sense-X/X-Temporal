@@ -34,7 +34,6 @@ config:
     consensus_type: avg
     dropout: 0.8
     img_feature_dim: 256
-    use_sync_bn: True
     non_local: False
     pretrain: True # imagenet pretrain for 2D network
 
@@ -45,7 +44,7 @@ config:
     epochs: 30
     start_epoch: 0
     loss_type: nll
-    no_partial_bn: False
+    no_partial_bn: True
     clip_gradient: 20
     lr_scheduler:
       warmup_epochs: 5

@@ -26,27 +26,12 @@ def get_model(config):
                     )
 
     elif config.net.model_type == '3D':
-        if arch == 'stresnet18':
-            model = stresnet18(sample_size=config.dataset.crop_size, sample_duration=config.dataset.num_segments,
+        if arch.startswith('stresnet'):
+            model = globals()[arch](sample_size=config.dataset.crop_size, sample_duration=config.dataset.num_segments,
                                num_classes=num_class, max_pooling=config.net.max_pooling, dropout=dropout)
-        elif arch == 'stresnet50':
-            model = stresnet50(sample_size=config.dataset.crop_size, sample_duration=config.dataset.num_segments,
-                               num_classes=num_class, max_pooling=config.net.max_pooling, dropout=dropout)
-        elif arch == 'stresnet101':
-            model = stresnet101(sample_size=config.dataset.crop_size, sample_duration=config.dataset.num_segments,
-                                num_classes=num_class, max_pooling=config.net.max_pooling, dropout=dropout)
-        elif arch == 'sfresnet50':
-            model = sfresnet50(sample_size=config.dataset.crop_size, sample_duration=config.dataset.num_segments,
+        elif arch.startswith('sfresnet') or arch.startswith('resnet3D'):
+            model = globals()[arch](sample_size=config.dataset.crop_size, sample_duration=config.dataset.num_segments,
                                 num_classes=num_class, dropout=dropout)
-        elif arch == 'sfresnet101':
-            model = sfresnet101(sample_size=config.dataset.crop_size, sample_duration=config.dataset.num_segments,
-                                num_classes=num_class, dropout=dropout)
-        elif arch == 'resnet3D18':
-            model = resnet3D18(sample_size=config.dataset.crop_size, sample_duration=config.dataset.num_segments,
-                               num_classes=num_class, dropout=dropout)
-        elif arch == 'resnet3D50':
-            model = resnet3D50(sample_size=config.dataset.crop_size, sample_duration=config.dataset.num_segments,
-                               num_classes=num_class, dropout=dropout)
         else:
             raise ValueError("Not Found Arch: %s" % arch)
 
@@ -54,7 +39,7 @@ def get_model(config):
     model = model.cuda(device=cur_device)
     if config.gpus > 1:
         model = torch.nn.parallel.DistributedDataParallel(
-                module=model, device_ids=[cur_device], output_device=cur_device, find_unused_parameters=True
+                module=model, device_ids=[cur_device], output_device=cur_device
                 )
 
     return model
