@@ -54,7 +54,7 @@ def get_model(config):
     model = model.cuda(device=cur_device)
     if config.gpus > 1:
         model = torch.nn.parallel.DistributedDataParallel(
-                module=model, device_ids=[cur_device], output_device=cur_device
+                module=model, device_ids=[cur_device], output_device=cur_device, find_unused_parameters=True
                 )
 
     return model
