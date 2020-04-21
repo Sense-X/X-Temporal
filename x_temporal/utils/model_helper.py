@@ -46,7 +46,7 @@ def load_state_dict(model, other_state_dict, strict=False):
 
     for key in incompatible_keys:
         other_state_dict.pop(key)
-    unexpected_keys = unexpected_keys & incompatible_keys
+    unexpected_keys = unexpected_keys | incompatible_keys
     model.load_state_dict(other_state_dict, strict=strict)
 
     num_share_keys = len(shared_keys)
