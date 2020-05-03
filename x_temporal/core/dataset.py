@@ -310,7 +310,7 @@ class VideoDataSet(data.Dataset):
                 ctx=cpu(0))
             for seg_ind in indices:
                 try:
-                    images.append(Image.fromarray(vr[seg_ind].asnumpy()))
+                    images.append(Image.fromarray(vr[seg_ind-1].asnumpy()))
                 except Exception as e:
                     images.append(Image.fromarray(vr[0].asnumpy()))
 
