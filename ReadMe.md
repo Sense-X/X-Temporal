@@ -109,7 +109,7 @@ python $ROOT/x_temporal/train.py --config $cfg | tee log.train.$T
 
 4. Start training.
 ```bash
-./test.sh
+./train.sh
 ```
 
 ### Testing
