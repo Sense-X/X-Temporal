@@ -16,6 +16,9 @@
 | resnet50  | MMit        | 16   | 224\*224 | -     | -     | 62.5 | 62.9 | [model](https://drive.google.com/open?id=1Tqsfqqol5udoVX0KhnexGZzzGZs0G9MZ) |
 | resnet101 | MMit        | 8    | 224\*224 | -     | -     | 62.2 | 63.0 | [model](https://drive.google.com/open?id=140dJeXaUVvqnLyI8h4wEYxxgLpXRBScF) |
 | resnet50  | Something   | 8    | 224\*224 | 46.0  | 47.1  | -    | -    | [model](https://drive.google.com/open?id=1xibYXjyvOsteoJNmSylXD9E7MKfIQYJQ) |
+| resnet101  | Kinetics-700   | 8    | 224\*224 | 61.9  | 64.3  | -    | -    | [model](https://drive.google.com/file/d/11HhSJSkrU6_NMyvm2gvAFSM0vy_yr-eg/view?usp=sharing) |
+
+
 
 
 #### SlowFast
