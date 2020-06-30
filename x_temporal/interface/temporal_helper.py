@@ -235,7 +235,7 @@ class TemporalHelper(object):
             mAP = self.calculate_mAP(output, batch[1])
             self._preverse_for_show = [loss.detach(), data_time, mAP]
         else:
-            prec1, prec5 = accuracy(output, batch[1], topk=(1, 5))
+            prec1, prec5 = accuracy(output, batch[1], topk=(1, min(5, self.config.dataset.num_class)))
             self._preverse_for_show = [loss.detach(), data_time, prec1.detach(), prec5.detach()]
         return loss
 
@@ -414,7 +414,7 @@ class TemporalHelper(object):
                 mAP = self.calculate_mAP(output, inputs[1])
                 mAPs.update(mAP, num)
             else:
-                prec1, prec5 = accuracy(output, inputs[1], topk=(1, 5))
+                prec1, prec5 = accuracy(output, inputs[1], topk=(1,  min(5, self.config.dataset.num_class)))
                 top1.update(prec1.item(), num)
                 top5.update(prec5.item(), num)
 
