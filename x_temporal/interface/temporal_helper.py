@@ -151,7 +151,7 @@ class TemporalHelper(object):
             sampler = DistributedSampler(dataset) if self.config.gpus  > 1 else None
             val_loader = torch.utils.data.DataLoader(
                 dataset,
-                batch_size=dargs.batch_size, shuffle=(False if sampler else False), 
+                batch_size=dargs.batch_size, shuffle=(False if sampler else True), 
                 drop_last=False, num_workers=dargs.workers, 
                 pin_memory=True, sampler=sampler)
             return val_loader
