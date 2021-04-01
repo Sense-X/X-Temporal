@@ -357,6 +357,8 @@ class TemporalHelper(object):
 
 
             end = time.time()
+	
+	if self.rank == 0: self.tb_logger.close()
 
     def save_checkpoint(self, state, is_best):
         torch.save(state, os.path.join(self.work_dir, self.config.saver.save_dir, 'ckpt.pth.tar'))
